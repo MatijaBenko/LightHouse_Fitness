@@ -1,2 +1,2 @@
-# FitnessApp
-Personal Fitness App for professional use
+# LightHouse App
+Fitness App for professional use
