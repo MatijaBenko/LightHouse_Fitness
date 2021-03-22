@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "130879384118",
-    "project_id": "jb-fitness-52427",
-    "storage_bucket": "jb-fitness-52427.appspot.com"
+    "project_number": "585083115032",
+    "project_id": "lighthouse-app-283d2",
+    "storage_bucket": "lighthouse-app-283d2.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:130879384118:android:76c3c84823a44115594697",
+        "mobilesdk_app_id": "1:585083115032:android:8b03a588cbc645648c956d",
         "android_client_info": {
-          "package_name": "com.example.jb_fitnessapp"
+          "package_name": "com.LightHouse.Fitness"
         }
       },
       "oauth_client": [
         {
-          "client_id": "130879384118-gps70b9kaqtd9tueieu6lsc0vtjt5huc.apps.googleusercontent.com",
+          "client_id": "585083115032-6pjf4db76ukp6l4nmlbs5rmd48m8122p.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCFBdOgKg5N87Jgw-BBSiqMoYm5HdMIMc4"
+          "current_key": "AIzaSyBPB9Ubchee0cXhs6oW2bhYx7CjaS7Y-0k"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "130879384118-gps70b9kaqtd9tueieu6lsc0vtjt5huc.apps.googleusercontent.com",
+              "client_id": "585083115032-6pjf4db76ukp6l4nmlbs5rmd48m8122p.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

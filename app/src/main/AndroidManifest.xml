@@ -9,7 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.JB_FitnessApp">
-        <activity android:name=".MainActivity">
+        <activity android:name="com.LightHouse.Fitness.Password_Reset_Activity"></activity>
+        <activity android:name="com.LightHouse.Fitness.Registration_Activity" />
+        <activity android:name="com.LightHouse.Fitness.Login_Activity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.LightHouse.Fitness.Main_Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
