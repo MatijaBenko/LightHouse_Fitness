@@ -20,7 +20,7 @@ public class Password_Reset_Activity extends AppCompatActivity {
 
     private TextView editLogin;
     private EditText userEmail;
-    private Button button_submit;
+    private Button button_Submit;
     private FirebaseAuth fbAuth;
 
     @Override
@@ -28,13 +28,13 @@ public class Password_Reset_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_password__reset);
 
-        button_submit = (Button) findViewById(R.id.button_Reset_Submit);
+        button_Submit = (Button) findViewById(R.id.button_Reset_Submit);
         userEmail = (EditText) findViewById(R.id.editText_UserEmail);
         editLogin = (TextView) findViewById(R.id.edit_password_reset_login_button);
 
         fbAuth = FirebaseAuth.getInstance();
 
-        button_submit.setOnClickListener(new View.OnClickListener() {
+        button_Submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String email = userEmail.getText().toString().trim();

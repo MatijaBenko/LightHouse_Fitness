@@ -2,38 +2,38 @@ package com.LightHouse.Fitness;
 
 public class User_Profile_Activity {
 
-    private String userName,userEmail,coach;
+    private String userName,userEmail, assignedTrainer;
     private Integer userAge;
     private Double userWeight;
 
     public User_Profile_Activity() {}
 
-    public User_Profile_Activity(String name, String email, Integer age, String trainer, Double weight){
-        this.userName = name;
-        this.userEmail = email;
-        this.coach = trainer;
-        this.userAge = age;
-        this.userWeight = weight;
+    public User_Profile_Activity(String userName, String userEmail, Integer userAge, String userTrainer, Double userWeight){
+        this.userName = userName;
+        this.userEmail = userEmail;
+        this.assignedTrainer = userTrainer;
+        this.userAge = userAge;
+        this.userWeight = userWeight;
     }
 
-    public void setUserName(String Name) {
-        this.userName = Name;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public void setUserEmail(String Email) {
-        this.userEmail = Email;
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 
-    public void setCoach(String trainer) {
-        this.coach = trainer;
+    public void setAssignedTrainer(String userTrainer) {
+        this.assignedTrainer = userTrainer;
     }
 
-    public void setAge(Integer age) {
-        this.userAge = age;
+    public void setAge(Integer userAge) {
+        this.userAge = userAge;
     }
 
-    public void setUserWeight(Double weight) {
-        this.userWeight = weight;
+    public void setUserWeight(Double userWeight) {
+        this.userWeight = userWeight;
     }
 
     public String getUserName() {
@@ -45,7 +45,7 @@ public class User_Profile_Activity {
     }
 
     public String setCoach() {
-        return this.coach;
+        return this.assignedTrainer;
     }
 
     public Integer setAge() {

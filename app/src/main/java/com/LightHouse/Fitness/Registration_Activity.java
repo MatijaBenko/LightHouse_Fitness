@@ -25,7 +25,7 @@ public class Registration_Activity extends AppCompatActivity {
 
     private TextView editLogin;
     private EditText editName, editEmail, editPassword, editRetypePassword;
-    private Button signUp_Button;
+    private Button button_SignUp;
 
     private FirebaseAuth firebaseAuth;
 
@@ -41,11 +41,11 @@ public class Registration_Activity extends AppCompatActivity {
         editEmail = (EditText) findViewById(R.id.Text_Register_Email);
         editPassword = (EditText) findViewById(R.id.Text_Register_Password);
         editRetypePassword = (EditText) findViewById(R.id.Text_Register_Retyped_Password);
-        signUp_Button = (Button) findViewById(R.id.button_Register_SignIn);
+        button_SignUp = (Button) findViewById(R.id.button_Register_SignIn);
         editLogin = (TextView) findViewById(R.id.edit_register_login_button);
 
 
-        signUp_Button.setOnClickListener(new View.OnClickListener() {
+        button_SignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String userName = editName.getText().toString().trim();
