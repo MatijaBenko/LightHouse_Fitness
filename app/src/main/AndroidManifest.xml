@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.jb_fitnessapp">
+    package="com.example.LightHouse_fitness">
 
     <application
         android:allowBackup="true"
@@ -8,20 +8,14 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.JB_FitnessApp">
-        <activity android:name="com.LightHouse.Fitness.Password_Reset_Activity"></activity>
+        android:theme="@style/Theme.LightHouse_FitnessApp">
+        <activity android:name="com.LightHouse.Fitness.Password_Reset_Activity" />
         <activity android:name="com.LightHouse.Fitness.Registration_Activity" />
+        <activity android:name="com.LightHouse.Fitness.Main_Activity" />
+        <activity android:name="com.LightHouse.Fitness.User_Profile_Activity" />
         <activity android:name="com.LightHouse.Fitness.Login_Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name="com.LightHouse.Fitness.Main_Activity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

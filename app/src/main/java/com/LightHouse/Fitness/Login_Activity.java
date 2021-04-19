@@ -12,23 +12,23 @@ import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.jb_fitnessapp.R;
+import com.example.LightHouse_fitness.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+
+
 public class Login_Activity extends AppCompatActivity {
 
-    private TextView newUser;
+    private TextView newUser, forgotPassword;
     private EditText editUserEmail, editUserPassword;
     private Button button_signIn;
-    private ImageView button_forgotPassword;
 
     private FirebaseAuth fbAuth;
 
@@ -41,15 +41,18 @@ public class Login_Activity extends AppCompatActivity {
         editUserEmail = (EditText) findViewById(R.id.Text_Login_EmailAddress);
         editUserPassword = (EditText) findViewById(R.id.Text_Login_Password);
         button_signIn = (Button) findViewById(R.id.button_Login_SignIn);
-        button_forgotPassword = (ImageView) findViewById(R.id.imageView_forgot_password);
+        forgotPassword = (TextView) findViewById(R.id.Text_Forgot_Password);
 
+        SpannableString ss = new SpannableString("Don't have an account?\nCreate an Account");
+        ForegroundColorSpan fcsLightBlue = new ForegroundColorSpan(Color.parseColor("#FF04C2DC"));
+        ss.setSpan(fcsLightBlue, 22,40, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        newUser.setText(ss);
+        main(newUser, editUserEmail, editUserPassword, button_signIn, forgotPassword);
+    }
+
+    private void main(TextView newUser, EditText editUserEmail, EditText editUserPassword, Button button_signIn, TextView forgotPassword) {
         fbAuth = FirebaseAuth.getInstance();
         FirebaseUser tmpUser = fbAuth.getCurrentUser();
-
-        SpannableString ss = new SpannableString("Don't have an account? Create one");
-        ForegroundColorSpan fcsLightBlue = new ForegroundColorSpan(Color.parseColor("#FF04C2DC"));
-        ss.setSpan(fcsLightBlue, 23,33, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        newUser.setText(ss);
 
         if(tmpUser!= null) {
             startActivity(new Intent(Login_Activity.this, Main_Activity.class));
@@ -75,7 +78,8 @@ public class Login_Activity extends AppCompatActivity {
             }
         });
 
-        button_forgotPassword.setOnClickListener(new View.OnClickListener() {
+
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(Login_Activity.this, Password_Reset_Activity.class));
@@ -110,5 +114,19 @@ public class Login_Activity extends AppCompatActivity {
             Toast.makeText(Login_Activity.this, "Please have your email Verify", Toast.LENGTH_SHORT).show();
             fbAuth.signOut();
         }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putString("UserEmail", editUserEmail.getText().toString());
+        outState.putString("UserPassword", editUserPassword.getText().toString());
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        editUserEmail.setText(savedInstanceState.getString("UserEmail"));
+        editUserPassword.setText(savedInstanceState.getString("UserPassword"));
     }
 }

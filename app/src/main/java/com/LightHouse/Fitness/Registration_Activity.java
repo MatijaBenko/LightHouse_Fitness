@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 import android.widget.TextView;
 
-import com.example.jb_fitnessapp.R;
+import com.example.LightHouse_fitness.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -108,8 +108,8 @@ public class Registration_Activity extends AppCompatActivity {
                         Toast.makeText(Registration_Activity.this, "Successfully Registered, Email Verification sent", Toast.LENGTH_SHORT).show();
                         FirebaseDatabase fbDataBase = FirebaseDatabase.getInstance();
                         DatabaseReference dataBaseRef = fbDataBase.getReference(firebaseAuth.getUid());
-                        User_Profile_Activity tmpUser = new User_Profile_Activity();
-                        dataBaseRef.setValue(tmpUser);
+                        //User_Profile_Activity tmpUser = new User_Profile_Activity();
+                        //dataBaseRef.setValue(tmpUser);
                         firebaseAuth.signOut();
                         startActivity(new Intent(Registration_Activity.this, Login_Activity.class));
                     } else {
