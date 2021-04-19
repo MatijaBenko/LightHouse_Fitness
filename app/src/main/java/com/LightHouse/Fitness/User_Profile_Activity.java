@@ -1,6 +1,10 @@
 package com.LightHouse.Fitness;
 
-public class User_Profile_Activity {
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.LightHouse_fitness.R;
+
+public class User_Profile_Activity extends AppCompatActivity {
 
     private String userName,userEmail, assignedTrainer;
     private Integer userAge;

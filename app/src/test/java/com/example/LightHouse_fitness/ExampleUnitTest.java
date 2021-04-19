@@ -1,4 +1,4 @@
-package com.example.jb_fitnessapp;
+package com.example.LightHouse_fitness;
 
 import org.junit.Test;
 
