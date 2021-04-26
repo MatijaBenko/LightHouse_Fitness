@@ -67,4 +67,17 @@ public class Password_Reset_Activity extends AppCompatActivity {
             });
         }
     }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putString("UserEmail", userEmail .getText().toString());
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        userEmail.setText(savedInstanceState.getString("UserEmail"));
+    }
+
 }

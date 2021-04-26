@@ -1,8 +1,15 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">LightHouse_Fitness</string>
-    <string name="email_hint">Email</string>
-    <string name="password_hint">Password</string>
     <string name="app_title">Light House Fitness \n <small>Let\'s Get Moving</small></string>
     <string name="sign_in_button">SIGN IN</string>
     <string name="text_forgot_password">Forgot password?</string>
+    <string name="register_account_title">Register Account</string>
+    <string name="user_name_hint">User Name</string>
+    <string name="password_hint">Password</string>
+    <string name="retype_password_hint">Retype Password</string>
+    <string name="email_hint">Email</string>
+    <string name="sign_up_button">Sign Up</string>
+    <string name="login_button">LOGIN</string>
+    <string name="reset_password_title">Reset Password</string>
+    <string name="submit_button">Submit</string>
 </resources>
