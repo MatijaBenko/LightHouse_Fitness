@@ -119,4 +119,22 @@ public class Registration_Activity extends AppCompatActivity {
             });
         }
     }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putString("UserName", editName.getText().toString());
+        outState.putString("UserEmail", editEmail.getText().toString());
+        outState.putString("UserPassword", editPassword.getText().toString());
+        outState.putString("UserReTypePassword", editRetypePassword.getText().toString());
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        editName.setText(savedInstanceState.getString("UserName"));
+        editEmail.setText(savedInstanceState.getString("UserEmail"));
+        editPassword.setText(savedInstanceState.getString("UserPassword"));
+        editRetypePassword.setText(savedInstanceState.getString("UserReTypePassword"));
+    }
 }

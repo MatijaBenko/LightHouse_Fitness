@@ -5,14 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.LightHouse.Fitness.Registration_Activity">
+
     <ImageView
         android:id="@+id/login_hero_bw"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="380dp"
+        android:layout_height="412dp"
         android:adjustViewBounds="true"
-        android:fontFamily="@font/arialbold"
-        app:layout_constraintBottom_toTopOf="@+id/textView_Register_Title"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/login_hero_bw_jonathan_borba_unsplash" />
@@ -21,98 +20,92 @@
         android:id="@+id/textView_Register_Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/arialbold"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
         android:text="@string/register_account_title"
         android:textSize="36sp"
         app:layout_constraintBottom_toTopOf="@+id/Text_Register_User_Name"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_hero_bw" />
+        app:layout_constraintStart_toEndOf="@+id/login_hero_bw"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/Text_Register_User_Name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="8dp"
-        android:fontFamily="@font/arialbold"
         android:ems="10"
+        android:fontFamily="@font/arialbold"
         android:hint="@string/user_name_hint"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/Text_Register_Email"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_Register_Title" />
+        app:layout_constraintStart_toEndOf="@+id/login_hero_bw"
+        app:layout_constraintBottom_toTopOf="@+id/Text_Register_Email"
+        app:layout_constraintTop_toBottomOf="@+id/textView_Register_Title"/>
 
     <EditText
         android:id="@+id/Text_Register_Email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:fontFamily="@font/arialbold"
         android:ems="10"
+        android:fontFamily="@font/arialbold"
         android:hint="@string/email_hint"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/Text_Register_Password"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Text_Register_User_Name" />
+        app:layout_constraintStart_toEndOf="@+id/login_hero_bw"
+        app:layout_constraintBottom_toTopOf="@+id/Text_Register_Password"
+        app:layout_constraintTop_toBottomOf="@+id/Text_Register_User_Name"/>
 
     <EditText
         android:id="@+id/Text_Register_Password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:fontFamily="@font/arialbold"
         android:ems="10"
+        android:fontFamily="@font/arialbold"
         android:hint="@string/password_hint"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/Text_Register_Retyped_Password"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/login_hero_bw"
+        app:layout_constraintBottom_toTopOf="@+id/Text_Register_Retyped_Password"
         app:layout_constraintTop_toBottomOf="@+id/Text_Register_Email" />
+
 
     <EditText
         android:id="@+id/Text_Register_Retyped_Password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:fontFamily="@font/arialbold"
         android:ems="10"
+        android:fontFamily="@font/arialbold"
         android:hint="@string/retype_password_hint"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/button_Register_SignIn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/login_hero_bw"
+        app:layout_constraintBottom_toTopOf="@+id/button_Register_SignIn"
         app:layout_constraintTop_toBottomOf="@+id/Text_Register_Password" />
-
 
     <Button
         android:id="@+id/button_Register_SignIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:fontFamily="sans-serif-black"
         android:text="@string/sign_up_button"
         app:backgroundTint="#FF0000"
-        app:layout_constraintBottom_toTopOf="@+id/edit_register_login_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Text_Register_Retyped_Password" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Text_Register_Retyped_Password"
+        app:layout_constraintStart_toEndOf="@+id/login_hero_bw"
+        app:layout_constraintEnd_toStartOf="@+id/edit_register_login_button"/>
 
     <TextView
         android:id="@+id/edit_register_login_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/login_button"
         android:fontFamily="sans-serif-black"
+        android:text="@string/login_button"
         android:textColor="#FF0000"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_Register_SignIn" />
+        app:layout_constraintStart_toEndOf="@+id/button_Register_SignIn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Text_Register_Retyped_Password"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

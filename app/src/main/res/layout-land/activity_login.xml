@@ -9,20 +9,33 @@
     android:exported="true"
     tools:context="com.LightHouse.Fitness.Login_Activity">
 
-    <EditText
-        android:id="@+id/Text_Login_Password"
-        android:layout_width="wrap_content"
+    <ImageView
+        android:id="@+id/login_hero_bw"
+        android:layout_width="380dp"
+        android:layout_height="412dp"
+        android:adjustViewBounds="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/login_hero_bw_jonathan_borba_unsplash" />
+
+    <TextView
+        android:id="@+id/textView_Login_Title"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:fontFamily="@font/arial"
-        android:hint="@string/password_hint"
-        android:inputType="textPassword"
-        android:textColor="@color/darkGrey"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/Text_Forgot_Password"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:fontFamily="@font/arialbold"
+        android:gravity="center"
+        android:text="@string/app_title"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toTopOf="@+id/Text_Login_EmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toEndOf="@+id/login_hero_bw"
-        app:layout_constraintTop_toBottomOf="@+id/Text_Login_EmailAddress" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/Text_Login_EmailAddress"
@@ -38,6 +51,31 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/login_hero_bw"
         app:layout_constraintTop_toBottomOf="@+id/textView_Login_Title" />
+
+    <EditText
+        android:id="@+id/Text_Login_Password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:fontFamily="@font/arial"
+        android:hint="@string/password_hint"
+        android:inputType="textPassword"
+        android:textColor="@color/darkGrey"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/Text_Forgot_Password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/login_hero_bw"
+        app:layout_constraintTop_toBottomOf="@+id/Text_Login_EmailAddress" />
+
+    <TextView
+        android:id="@+id/Text_Forgot_Password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_forgot_password"
+        app:layout_constraintBottom_toTopOf="@+id/Text_CreateAccount"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/login_hero_bw"
+        app:layout_constraintTop_toBottomOf="@+id/Text_Login_Password" />
 
     <Button
         android:id="@+id/button_Login_SignIn"
@@ -59,24 +97,6 @@
         app:layout_constraintTop_toBottomOf="@+id/Text_Forgot_Password" />
 
     <TextView
-        android:id="@+id/textView_Login_Title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:fontFamily="@font/arialbold"
-        android:gravity="center"
-        android:text="@string/app_title"
-        android:textSize="28sp"
-        app:layout_constraintBottom_toTopOf="@+id/Text_Login_EmailAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/login_hero_bw"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/Text_CreateAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -88,24 +108,8 @@
         app:layout_constraintStart_toEndOf="@+id/login_hero_bw"
         app:layout_constraintTop_toBottomOf="@+id/button_Login_SignIn" />
 
-    <ImageView
-        android:id="@+id/login_hero_bw"
-        android:layout_width="380dp"
-        android:layout_height="412dp"
-        android:adjustViewBounds="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/login_hero_bw_jonathan_borba_unsplash" />
 
-    <TextView
-        android:id="@+id/Text_Forgot_Password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/text_forgot_password"
-        app:layout_constraintBottom_toTopOf="@+id/Text_CreateAccount"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/login_hero_bw"
-        app:layout_constraintTop_toBottomOf="@+id/Text_Login_Password" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
