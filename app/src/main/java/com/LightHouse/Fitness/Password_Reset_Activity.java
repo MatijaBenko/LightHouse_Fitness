@@ -2,6 +2,7 @@ package com.LightHouse.Fitness;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 
 import android.os.Bundle;
@@ -51,14 +52,14 @@ public class Password_Reset_Activity extends AppCompatActivity {
     }
 
     public void emailValidation(String email) {
-        if(email.equals("")) {
+        if (email.equals("")) {
             Toast.makeText(Password_Reset_Activity.this, "Please enter the email associated to the account", Toast.LENGTH_SHORT).show();
         } else {
             fbAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
-                    if(task.isSuccessful()){
-                        Toast.makeText(Password_Reset_Activity.this,"Check Email to reset your password", Toast.LENGTH_SHORT).show();
+                    if (task.isSuccessful()) {
+                        Toast.makeText(Password_Reset_Activity.this, "Check Email to reset your password", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(Password_Reset_Activity.this, Login_Activity.class));
                     } else {
                         Toast.makeText(Password_Reset_Activity.this, "Failed to send Password Reset via Email", Toast.LENGTH_SHORT).show();
@@ -70,7 +71,7 @@ public class Password_Reset_Activity extends AppCompatActivity {
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        outState.putString("UserEmail", userEmail .getText().toString());
+        outState.putString("UserEmail", userEmail.getText().toString());
         super.onSaveInstanceState(outState);
     }
 

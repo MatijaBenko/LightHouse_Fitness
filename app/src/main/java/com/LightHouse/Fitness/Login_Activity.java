@@ -23,7 +23,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 
-
 public class Login_Activity extends AppCompatActivity {
 
     private TextView newUser, forgotPassword;
@@ -45,7 +44,7 @@ public class Login_Activity extends AppCompatActivity {
 
         SpannableString ss = new SpannableString("Don't have an account?\nCreate an Account");
         ForegroundColorSpan fcsLightBlue = new ForegroundColorSpan(Color.parseColor("#FF04C2DC"));
-        ss.setSpan(fcsLightBlue, 22,40, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        ss.setSpan(fcsLightBlue, 22, 40, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         newUser.setText(ss);
         main(newUser, editUserEmail, editUserPassword, button_signIn, forgotPassword);
     }
@@ -54,7 +53,7 @@ public class Login_Activity extends AppCompatActivity {
         fbAuth = FirebaseAuth.getInstance();
         FirebaseUser tmpUser = fbAuth.getCurrentUser();
 
-        if(tmpUser!= null) {
+        if (tmpUser != null) {
             startActivity(new Intent(Login_Activity.this, Main_Activity.class));
         }
 
@@ -88,13 +87,13 @@ public class Login_Activity extends AppCompatActivity {
     }
 
     public void validation(String email, String password) {
-        if(email.isEmpty() || password.isEmpty()) {
+        if (email.isEmpty() || password.isEmpty()) {
             Toast.makeText(Login_Activity.this, "Login Failed", Toast.LENGTH_SHORT).show();
         } else {
-            fbAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            fbAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-                    if(task.isSuccessful()){
+                    if (task.isSuccessful()) {
                         checkEmailVerification();
                     } else {
                         Toast.makeText(Login_Activity.this, "Login Failed", Toast.LENGTH_SHORT).show();
@@ -107,8 +106,8 @@ public class Login_Activity extends AppCompatActivity {
     public void checkEmailVerification() {
         FirebaseUser fbUser = fbAuth.getCurrentUser();
         Boolean isEmailVerify = fbUser.isEmailVerified();
-        if(isEmailVerify) {
-            Toast.makeText(Login_Activity.this, "Login Successful",Toast.LENGTH_SHORT).show();
+        if (isEmailVerify) {
+            Toast.makeText(Login_Activity.this, "Login Successful", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(Login_Activity.this, Main_Activity.class));
         } else {
             Toast.makeText(Login_Activity.this, "Please have your email Verify", Toast.LENGTH_SHORT).show();
