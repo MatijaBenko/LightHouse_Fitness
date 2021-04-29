@@ -21,11 +21,15 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Vector;
+
 public class Registration_Activity extends AppCompatActivity {
 
     private TextView editLogin;
     private EditText editName, editEmail, editPassword, editRetypePassword;
     private Button button_SignUp;
+    private String userName, userEmail, userPassword, userRetypePassword;
+    private Vector<String> userGoals = new Vector<String>();
 
     private FirebaseAuth firebaseAuth;
 
@@ -48,16 +52,17 @@ public class Registration_Activity extends AppCompatActivity {
         button_SignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String userName = editName.getText().toString().trim();
-                String userEmail = editEmail.getText().toString().trim();
-                String userPassword = editPassword.getText().toString().trim();
-                String userRetypePassword = editRetypePassword.getText().toString().trim();
+                userName = editName.getText().toString().trim();
+                userEmail = editEmail.getText().toString().trim();
+                userPassword = editPassword.getText().toString().trim();
+                userRetypePassword = editRetypePassword.getText().toString().trim();
+                firebaseAuth = FirebaseAuth.getInstance();
 
-                if(validation(userName, userEmail, userPassword, userRetypePassword)) {
+                if (validation(userName, userEmail, userPassword, userRetypePassword)) {
                     firebaseAuth.createUserWithEmailAndPassword(userEmail, userPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            if(task.isSuccessful()) {
+                            if (task.isSuccessful()) {
                                 sendEmailVerification(firebaseAuth);
                                 startActivity(new Intent(Registration_Activity.this, Login_Activity.class));
                             } else {
@@ -82,35 +87,46 @@ public class Registration_Activity extends AppCompatActivity {
             }
         });
     }
+
     private boolean validation(String userName, String userEmail, String userPassword, String userRetypePassword) {
         boolean result = false;
 
-        if(userName.equals("") || userEmail.equals("") || userPassword.equals("") || userRetypePassword.equals("")) {
+        if (userName.equals("") || userEmail.equals("") || userPassword.equals("") || userRetypePassword.equals("")) {
             Toast.makeText(getApplicationContext(), "All Fields must be Filled", Toast.LENGTH_LONG).show();
         } else if (!(userPassword.equals(userRetypePassword))) {
-            Toast.makeText(getApplicationContext(),"Password does not match Retype Password, try again", Toast.LENGTH_LONG).show();
-        } else if(userPassword.length() < 6) {
-            Toast.makeText(getApplicationContext(),"Password much be greater than 5 characters", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Password does not match Retype Password, try again", Toast.LENGTH_LONG).show();
+        } else if (userPassword.length() < 6) {
+            Toast.makeText(getApplicationContext(), "Password much be greater than 5 characters", Toast.LENGTH_LONG).show();
         } else {
             result = true;
         }
         return result;
     }
 
-    private void sendEmailVerification(FirebaseAuth firebaseAuth){
+    private void sendEmailVerification(FirebaseAuth firebaseAuth) {
         FirebaseUser user = firebaseAuth.getCurrentUser();
 
-        if(user!=null) {
+        if (user != null) {
             user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
-                    if(task.isSuccessful())  {
+                    if (task.isSuccessful()) {
                         Toast.makeText(Registration_Activity.this, "Successfully Registered, Email Verification sent", Toast.LENGTH_SHORT).show();
                         FirebaseDatabase fbDataBase = FirebaseDatabase.getInstance();
-                        DatabaseReference dataBaseRef = fbDataBase.getReference(firebaseAuth.getUid());
-                        //User_Profile_Activity tmpUser = new User_Profile_Activity();
-                        //dataBaseRef.setValue(tmpUser);
+                        DatabaseReference dataBaseRef = fbDataBase.getReference("Users");
+                        User_Profile_Activity user = new User_Profile_Activity();
+                        userGoals.add("Goal 1: ");
+                        userGoals.add("Goal 2: ");
+                        user.setUserEmail(userEmail);
+                        user.setUserName(userName);
+                        user.setUserNotes("");
+                        user.setUserWeight(-1.0);
+                        user.setUserAge(-1);
+                        user.setUserGoals(userGoals);
+                        user.setUserID(firebaseAuth.getUid());
+                        dataBaseRef.child("User: " + user.getUserID()).setValue(user);
                         firebaseAuth.signOut();
+                        finish();
                         startActivity(new Intent(Registration_Activity.this, Login_Activity.class));
                     } else {
                         Toast.makeText(Registration_Activity.this, "Email Verification Failed!", Toast.LENGTH_SHORT).show();

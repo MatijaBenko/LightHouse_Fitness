@@ -12,4 +12,6 @@
     <string name="login_button">LOGIN</string>
     <string name="reset_password_title">Reset Password</string>
     <string name="submit_button">Submit</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -1,25 +1,19 @@
 package com.LightHouse.Fitness;
 
-import androidx.appcompat.app.AppCompatActivity;
+import java.util.List;
+import java.util.Vector;
 
-import com.example.LightHouse_fitness.R;
+public class User_Profile_Activity {
 
-public class User_Profile_Activity extends AppCompatActivity {
-
-    private String userName,userEmail, assignedTrainer;
+    private String userName, userEmail, userNotes, userID;
+    private Vector<String> userGoals;
     private Integer userAge;
     private Double userWeight;
 
-    public User_Profile_Activity() {}
-
-    public User_Profile_Activity(String userName, String userEmail, Integer userAge, String userTrainer, Double userWeight){
-        this.userName = userName;
-        this.userEmail = userEmail;
-        this.assignedTrainer = userTrainer;
-        this.userAge = userAge;
-        this.userWeight = userWeight;
+    public User_Profile_Activity() {
     }
 
+    // Setters
     public void setUserName(String userName) {
         this.userName = userName;
     }
@@ -28,11 +22,7 @@ public class User_Profile_Activity extends AppCompatActivity {
         this.userEmail = userEmail;
     }
 
-    public void setAssignedTrainer(String userTrainer) {
-        this.assignedTrainer = userTrainer;
-    }
-
-    public void setAge(Integer userAge) {
+    public void setUserAge(Integer userAge) {
         this.userAge = userAge;
     }
 
@@ -40,23 +30,44 @@ public class User_Profile_Activity extends AppCompatActivity {
         this.userWeight = userWeight;
     }
 
+    public void setUserNotes(String userNotes) {
+        this.userNotes = userNotes;
+    }
+
+    public void setUserGoals(Vector<String> userGoals) {
+        this.userGoals = userGoals;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
+
+    // Getters
     public String getUserName() {
         return this.userName;
     }
 
-    public String setUserEmail() {
+    public String getUserEmail() {
         return this.userEmail;
     }
 
-    public String setCoach() {
-        return this.assignedTrainer;
-    }
-
-    public Integer setAge() {
+    public Integer getUserAge() {
         return this.userAge;
     }
 
     public Double getUserWeight() {
         return this.userWeight;
+    }
+
+    public String getUserNotes() {
+        return this.userNotes;
+    }
+
+    public List<String> getUserGoals() {
+        return userGoals;
+    }
+
+    public String getUserID() {
+        return this.userID;
     }
 }
