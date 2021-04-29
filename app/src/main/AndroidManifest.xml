@@ -12,7 +12,6 @@
         <activity android:name="com.LightHouse.Fitness.Password_Reset_Activity" />
         <activity android:name="com.LightHouse.Fitness.Registration_Activity" />
         <activity android:name="com.LightHouse.Fitness.Main_Activity" />
-        <activity android:name="com.LightHouse.Fitness.User_Profile_Activity" />
         <activity android:name="com.LightHouse.Fitness.Login_Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
