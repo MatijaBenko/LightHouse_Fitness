@@ -5,7 +5,7 @@ import java.util.Vector;
 
 public class User_Profile_Activity {
 
-    private String userName, userEmail, userNotes, userID;
+    private String userName, userEmail, userNotes, userID, userBundle;
     private Vector<String> userGoals;
     private Integer userAge;
     private Double userWeight;
@@ -42,6 +42,8 @@ public class User_Profile_Activity {
         this.userID = userID;
     }
 
+    public void setUserBundle(String userBundle) { this.userBundle = userBundle;}
+
     // Getters
     public String getUserName() {
         return this.userName;
@@ -70,4 +72,6 @@ public class User_Profile_Activity {
     public String getUserID() {
         return this.userID;
     }
+
+    public String getUserBundle() { return  this.userBundle;}
 }

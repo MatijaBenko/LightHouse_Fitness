@@ -29,7 +29,6 @@ public class Registration_Activity extends AppCompatActivity {
     private EditText editName, editEmail, editPassword, editRetypePassword;
     private Button button_SignUp;
     private String userName, userEmail, userPassword, userRetypePassword;
-    private Vector<String> userGoals = new Vector<String>();
 
     private FirebaseAuth firebaseAuth;
 
@@ -115,15 +114,13 @@ public class Registration_Activity extends AppCompatActivity {
                         FirebaseDatabase fbDataBase = FirebaseDatabase.getInstance();
                         DatabaseReference dataBaseRef = fbDataBase.getReference("Users");
                         User_Profile_Activity user = new User_Profile_Activity();
-                        userGoals.add("Goal 1: ");
-                        userGoals.add("Goal 2: ");
                         user.setUserEmail(userEmail);
                         user.setUserName(userName);
                         user.setUserNotes("");
                         user.setUserWeight(-1.0);
                         user.setUserAge(-1);
-                        user.setUserGoals(userGoals);
                         user.setUserID(firebaseAuth.getUid());
+                        user.setUserBundle("FREE");
                         dataBaseRef.child("User: " + user.getUserID()).setValue(user);
                         firebaseAuth.signOut();
                         finish();
