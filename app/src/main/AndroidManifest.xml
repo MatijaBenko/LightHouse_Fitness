@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.LightHouse_fitness">
+    package="com.LightHouse_Fitness">
 
     <application
         android:allowBackup="true"
@@ -9,12 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LightHouse_FitnessApp">
+        <service
+            android:name="com.LightHouse.Fitness.TimerJobIntentService"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <activity android:name="com.LightHouse.Fitness.WorkoutTimer"></activity>
         <activity android:name="com.LightHouse.Fitness.Password_Reset_Activity" />
         <activity android:name="com.LightHouse.Fitness.Registration_Activity" />
         <activity android:name="com.LightHouse.Fitness.Main_Activity" />
         <activity android:name="com.LightHouse.Fitness.Login_Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

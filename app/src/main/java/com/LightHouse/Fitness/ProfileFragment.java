@@ -7,8 +7,13 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.util.Log;
+import android.view.MotionEvent;
+import android.widget.ImageView;
 
-import com.example.LightHouse_fitness.R;
+import androidx.core.view.GestureDetectorCompat;
+
+import com.LightHouse_Fitness.R;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,6 +30,9 @@ public class ProfileFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private GestureDetectorCompat mDetector;
+    private final String TAG = "GestureDemo";
+    private ImageView userProfilePicture;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -49,6 +57,14 @@ public class ProfileFragment extends Fragment {
     }
 
     @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View myView = inflater.inflate(R.layout.fragment_profile, container, false);
+        return myView;
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
@@ -56,11 +72,6 @@ public class ProfileFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
-    }
 }
+
+

@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TableLayout;
 
-import com.example.LightHouse_fitness.R;
+import com.LightHouse_Fitness.R;
 
 
 public class MealFragment extends Fragment {

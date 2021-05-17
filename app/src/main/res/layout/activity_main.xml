@@ -8,28 +8,27 @@
 
     <ImageView
         android:id="@+id/workout_tab_hero"
-        android:layout_width="412dp"
-        android:layout_height="105dp"
+        android:layout_width="414dp"
+        android:layout_height="195dp"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationview"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_layout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/workout_tab_hero_bw_karsten_winegeart_unsplash" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationview"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:background="@color/lightGray_1"
-        app:layout_constraintBottom_toTopOf="@+id/button_main_logout"
+        android:background="#00ffffff"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/workout_tab_hero"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         app:menu="@menu/menu">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
@@ -42,23 +41,41 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_main_logout"
+        app:layout_constraintTop_toBottomOf="@+id/workout_tab_hero"
         app:layout_constraintVertical_bias="0.0">
     </FrameLayout>
 
-    <Button
-        android:id="@+id/button_main_logout"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textView_title"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/bottomNavigationview"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="130dp"
+        android:fontFamily="@font/arialbold"
+        android:text="LIGHTHOUSE FITNESS"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/white"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toBottomOf="@+id/bottomNavigationview"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/fragment_layout"
-        android:text="Log Out" />
+        app:layout_constraintHorizontal_bias="0.183"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-
-
-
+    <TextView
+        android:id="@+id/textView_statement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/arialbold"
+        android:text="LET'S GET MOVING"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.158"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.577" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

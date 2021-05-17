@@ -10,13 +10,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.LightHouse_fitness.R;
+import com.LightHouse_Fitness.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Main_Activity extends AppCompatActivity {
 
-    private Button button_Logout;
+    //private Button button_Logout;
     private FirebaseAuth fbAuth;
 
     @Override
@@ -32,17 +32,17 @@ public class Main_Activity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_layout, new WorkoutFragment()).commit();
 
-        button_Logout = (Button) findViewById(R.id.button_main_logout);
+        //button_Logout = (Button) findViewById(R.id.button_main_logout);
 
         fbAuth = FirebaseAuth.getInstance();
 
-        button_Logout.setOnClickListener(new View.OnClickListener() {
+        /*button_Logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 fbAuth.signOut();
                 startActivity(new Intent(Main_Activity.this, Login_Activity.class));
             }
-        });
+        });*/
     }
 
     // Listener Navigation Bar
