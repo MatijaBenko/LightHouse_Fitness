@@ -24,9 +24,9 @@ public class TimerModel {
         mRunning = true;
     }
 
-    public void start(int hours, int minutes, int seconds) {
+    public void start(int minutes, int seconds) {
         // Add 1 sec to duration so timer stays on current second longer
-        mDurationMillis = (hours * 60 * 60 + minutes * 60 + seconds + 1) * 1000;
+        mDurationMillis = (minutes * 60 + seconds + 1) * 1000;
         mTargetTime = SystemClock.uptimeMillis() + mDurationMillis;
 
         mRunning = true;
@@ -67,13 +67,6 @@ public class TimerModel {
         return 0;
     }
 
-    public int getRemainingHours() {
-        if (mRunning) {
-            return (int) (((getRemainingMilliseconds() / 1000) / 60) / 60);
-        }
-        return 0;
-    }
-
     public int getProgressPercent() {
         if (mDurationMillis != 1000) {
             return Math.min(100, 100 - (int) ((getRemainingMilliseconds() - 1000) * 100 /
@@ -84,7 +77,7 @@ public class TimerModel {
 
     @Override
     public String toString() {
-        return String.format(Locale.getDefault(), "%02d:%02d:%02d", getRemainingHours(),
+        return String.format(Locale.getDefault(), "%02d:%02d",
                 getRemainingMinutes(), getRemainingSeconds());
     }
 }

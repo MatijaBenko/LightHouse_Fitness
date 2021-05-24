@@ -1,5 +1,6 @@
 package com.LightHouse.Fitness;
 
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.os.Bundle;
 import android.os.Looper;
@@ -15,8 +16,6 @@ import com.LightHouse_Fitness.R;
 import java.text.DecimalFormat;
 
 public class WorkoutTimer extends AppCompatActivity {
-
-    private NumberPicker mHoursPicker;
     private NumberPicker mMinutesPicker;
     private NumberPicker mSecondsPicker;
     private Button mStartButton;
@@ -28,10 +27,15 @@ public class WorkoutTimer extends AppCompatActivity {
     private Handler mHandler;
     private TimerModel mTimerModel;
 
+    private MediaPlayer mediaCountDown;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_timer);
+
+        // Create Audio SoundEffect
+        mediaCountDown = MediaPlayer.create(this, R.raw.timer_countdown);
 
         // Initially hide the timer and progress bar
         mTimeLeftTextView = findViewById(R.id.timeLeft);
@@ -56,14 +60,9 @@ public class WorkoutTimer extends AppCompatActivity {
         };
 
         // Set min and max values for all NumberPickers
-        mHoursPicker = findViewById(R.id.hoursPicker);
-        mHoursPicker.setMinValue(0);
-        mHoursPicker.setMaxValue(99);
-        mHoursPicker.setFormatter(numFormat);
-
         mMinutesPicker = findViewById(R.id.minutesPicker);
         mMinutesPicker.setMinValue(0);
-        mMinutesPicker.setMaxValue(59);
+        mMinutesPicker.setMaxValue(5);
         mMinutesPicker.setFormatter(numFormat);
 
         mSecondsPicker = findViewById(R.id.secondsPicker);
@@ -79,11 +78,10 @@ public class WorkoutTimer extends AppCompatActivity {
 
     public void startButtonClick(View view) {
         // Get values from NumberPickers
-        int hours = mHoursPicker.getValue();
         int minutes = mMinutesPicker.getValue();
         int seconds = mSecondsPicker.getValue();
 
-        if (hours + minutes + seconds > 0) {
+        if (minutes + seconds > 0) {
             // Show progress
             mTimeLeftTextView.setVisibility(View.VISIBLE);
             mProgressBar.setProgress(0);
@@ -96,7 +94,7 @@ public class WorkoutTimer extends AppCompatActivity {
             mCancelButton.setVisibility(View.VISIBLE);
 
             // Start the model
-            mTimerModel.start(hours, minutes, seconds);
+            mTimerModel.start(minutes, seconds);
 
             // Start sending Runnables to message queue
             mHandler.post(mUpdateTimerRunnable);
@@ -109,19 +107,27 @@ public class WorkoutTimer extends AppCompatActivity {
             mTimerModel.pause();
             mHandler.removeCallbacks(mUpdateTimerRunnable);
             mPauseButton.setText(R.string.resume);
+            if(mTimerModel.getRemainingMilliseconds() <= 3000) {
+                mediaCountDown.pause();
+            }
         }
         else {
             // Resume and change to pause button
             mTimerModel.resume();
             mHandler.post(mUpdateTimerRunnable);
             mPauseButton.setText(R.string.pause);
+            if(mTimerModel.getRemainingMilliseconds() <= 3000) {
+                mediaCountDown.start();
+            }
         }
+
     }
 
     public void cancelButtonClick(View view) {
         mTimeLeftTextView.setVisibility(View.INVISIBLE);
         mProgressBar.setVisibility(View.INVISIBLE);
         timerCompleted();
+        mediaCountDown.stop();
     }
 
     private void timerCompleted() {
@@ -154,7 +160,9 @@ public class WorkoutTimer extends AppCompatActivity {
             mTimeLeftTextView.setText(mTimerModel.toString());
             int progress = mTimerModel.getProgressPercent();
             mProgressBar.setProgress(progress);
-
+            if(mTimerModel.getRemainingMilliseconds() <= 3000) {
+                mediaCountDown.start();
+            }
             // Only post Runnable if more time remains
             if (progress == 100) {
                 timerCompleted();

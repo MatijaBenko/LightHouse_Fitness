@@ -1,7 +1,9 @@
 package com.LightHouse.Fitness;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -9,11 +11,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 import androidx.core.view.GestureDetectorCompat;
 
 import com.LightHouse_Fitness.R;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import org.w3c.dom.Text;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -32,7 +46,12 @@ public class ProfileFragment extends Fragment {
     private String mParam2;
     private GestureDetectorCompat mDetector;
     private final String TAG = "GestureDemo";
+    private Button button_Logout, button_Profileupdate;
     private ImageView userProfilePicture;
+    private DatabaseReference dbReff;
+    private FirebaseUser fbUser;
+    private FirebaseAuth fbAuth;
+    private TextView userProfileName, userEmail, userAge;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -61,6 +80,48 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View myView = inflater.inflate(R.layout.fragment_profile, container, false);
+
+        fbAuth = FirebaseAuth.getInstance();
+        fbUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        button_Logout = (Button) myView.findViewById(R.id.button_Profilelogout);
+        button_Profileupdate = (Button) myView.findViewById(R.id.button_ProfileUpdate);
+        userProfileName = (TextView) myView.findViewById(R.id.textview_userProfileName);
+        userEmail = (TextView) myView.findViewById(R.id.textView_userProfileEmail);
+        userAge = (TextView) myView.findViewById(R.id.textView_userProfileAge) ;
+
+
+
+        button_Logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fbAuth.signOut();
+                startActivity(new Intent(getActivity(), Login_Activity.class));
+            }
+        });
+
+        button_Profileupdate.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                dbReff = FirebaseDatabase.getInstance().getReference().child("Users").child(fbUser.getUid());
+                dbReff.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                        String userDataName =  snapshot.child("userName").getValue().toString();
+                        String userDataAge =  snapshot.child("userAge").getValue().toString();
+                        String userDataEmail =  snapshot.child("userEmail").getValue().toString();
+                        userProfileName.setText(userDataName);
+                        userEmail.setText(userDataEmail);
+                        userAge.setText(String.valueOf(Integer.parseInt(userDataAge)));
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
+        });
         return myView;
     }
 

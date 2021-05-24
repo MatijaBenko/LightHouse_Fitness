@@ -5,6 +5,34 @@
     android:layout_height="match_parent"
     tools:context="com.LightHouse.Fitness.ProfileFragment">
 
+    <Button
+        android:id="@+id/button_ProfileUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/red"
+        android:text="Update"
+        app:backgroundTint="@color/red"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.716"
+        app:layout_constraintStart_toEndOf="@+id/button_Profilelogout"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
+
+    <Button
+        android:id="@+id/button_Profilelogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/red"
+        android:text="Logout"
+        app:backgroundTint="@color/red"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_ProfileUpdate"
+        app:layout_constraintHorizontal_bias="0.198"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
+
     <RelativeLayout
         android:id="@+id/rellay1"
         android:layout_width="match_parent"
@@ -35,7 +63,7 @@
         </RelativeLayout>
 
         <TextView
-            android:id="@+id/userProfileName"
+            android:id="@+id/textview_userProfileName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/userImage"
@@ -48,6 +76,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -79,7 +108,7 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/userProfileEmail"
+                    android:id="@+id/textView_userProfileEmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
@@ -108,7 +137,7 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/userProfileAge"
+                    android:id="@+id/textView_userProfileAge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
@@ -153,8 +182,9 @@
                     android:background="@color/gray" />
 
             </LinearLayout>
-
         </LinearLayout>
 
     </RelativeLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
