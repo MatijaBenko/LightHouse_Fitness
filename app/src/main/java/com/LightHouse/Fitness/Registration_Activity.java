@@ -121,7 +121,7 @@ public class Registration_Activity extends AppCompatActivity {
                         user.setUserAge(-1);
                         user.setUserID(firebaseAuth.getUid());
                         user.setUserBundle("FREE");
-                        dataBaseRef.child("User: " + user.getUserID()).setValue(user);
+                        dataBaseRef.child(user.getUserID()).setValue(user);
                         firebaseAuth.signOut();
                         finish();
                         startActivity(new Intent(Registration_Activity.this, Login_Activity.class));

@@ -31,26 +31,6 @@
         app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
-        android:id="@+id/hoursTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hours"
-        app:layout_constraintBottom_toTopOf="@+id/hoursPicker"
-        app:layout_constraintLeft_toLeftOf="@+id/hoursPicker"
-        app:layout_constraintRight_toRightOf="@+id/hoursPicker" />
-
-    <NumberPicker
-        android:id="@+id/hoursPicker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:minValue="0"
-        tools:maxValue="10"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/minutesPicker"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/minutesTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -63,12 +43,13 @@
         android:id="@+id/minutesPicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:minValue="0"
-        tools:maxValue="59"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/secondsPicker"
-        app:layout_constraintLeft_toRightOf="@+id/hoursPicker"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.672"
+        tools:maxValue="59"
+        tools:minValue="0" />
 
     <TextView
         android:id="@+id/secondsTextView"
@@ -83,12 +64,13 @@
         android:id="@+id/secondsPicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:minValue="0"
-        tools:maxValue="59"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/minutesPicker"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.67"
+        tools:maxValue="59"
+        tools:minValue="0" />
 
     <Button
         android:id="@+id/startButton"
