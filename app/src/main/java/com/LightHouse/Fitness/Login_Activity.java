@@ -36,26 +36,24 @@ public class Login_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        // Initialization of Variables
         newUser = (TextView) findViewById(R.id.Text_CreateAccount);
         editUserEmail = (EditText) findViewById(R.id.Text_Login_EmailAddress);
         editUserPassword = (EditText) findViewById(R.id.Text_Login_Password);
         button_signIn = (Button) findViewById(R.id.button_Login_SignIn);
         forgotPassword = (TextView) findViewById(R.id.Text_Forgot_Password);
 
+        // Creates colored text on UI
         SpannableString ss = new SpannableString("Don't have an account?\nCreate an Account");
         ForegroundColorSpan fcsLightBlue = new ForegroundColorSpan(Color.parseColor("#FF04C2DC"));
         ss.setSpan(fcsLightBlue, 22, 40, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         newUser.setText(ss);
+
         main(newUser, editUserEmail, editUserPassword, button_signIn, forgotPassword);
     }
 
     private void main(TextView newUser, EditText editUserEmail, EditText editUserPassword, Button button_signIn, TextView forgotPassword) {
         fbAuth = FirebaseAuth.getInstance();
-        FirebaseUser tmpUser = fbAuth.getCurrentUser();
-
-        if (tmpUser != null) {
-            startActivity(new Intent(Login_Activity.this, Main_Activity.class));
-        }
 
         newUser.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,12 +62,14 @@ public class Login_Activity extends AppCompatActivity {
             }
         });
 
+        //Reset text Fields when user enters information
         button_signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String userEmail = editUserEmail.getText().toString().trim();
                 String userPassword = editUserPassword.getText().toString().trim();
 
+                // Checks if User Information matches database
                 validation(userEmail, userPassword);
 
                 editUserEmail.setText("");
@@ -77,7 +77,7 @@ public class Login_Activity extends AppCompatActivity {
             }
         });
 
-
+        // Navigates User to another activity to reset password
         forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -106,7 +106,12 @@ public class Login_Activity extends AppCompatActivity {
     public void checkEmailVerification() {
         FirebaseUser fbUser = fbAuth.getCurrentUser();
         Boolean isEmailVerify = fbUser.isEmailVerified();
-        if (isEmailVerify) {
+        String userBoss = String.valueOf(fbUser.getUid());
+
+        if (isEmailVerify && userBoss.equals("m03bY8AzoaQqarD3dibl6vEKL8X2")) {
+            Toast.makeText(Login_Activity.this, "Welcome Boss", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(Login_Activity.this, MasterControlRoom.class));
+        } else if (isEmailVerify){
             Toast.makeText(Login_Activity.this, "Login Successful", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(Login_Activity.this, Main_Activity.class));
         } else {

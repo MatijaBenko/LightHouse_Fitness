@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.LightHouse_Fitness">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,11 +12,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LightHouse_FitnessApp">
+        <activity
+            android:name="com.LightHouse.Fitness.PopUpWindow"
+            android:theme="@style/AppTheme.popMe" />
+        <activity android:name="com.LightHouse.Fitness.MasterControlRoom" />
+
         <service
             android:name="com.LightHouse.Fitness.TimerJobIntentService"
             android:exported="false"
             android:permission="android.permission.BIND_JOB_SERVICE" />
-        <activity android:name="com.LightHouse.Fitness.WorkoutTimer"></activity>
+
+        <activity android:name="com.LightHouse.Fitness.WorkoutTimer" />
         <activity android:name="com.LightHouse.Fitness.Password_Reset_Activity" />
         <activity android:name="com.LightHouse.Fitness.Registration_Activity" />
         <activity android:name="com.LightHouse.Fitness.Main_Activity" />

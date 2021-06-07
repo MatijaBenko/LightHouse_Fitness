@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.LightHouse.Fitness"
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -41,7 +41,11 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:20.0.2'
     implementation 'com.google.firebase:firebase-database:19.6.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'org.jetbrains:annotations:15.0'
+    implementation 'com.google.firebase:firebase-storage:19.2.2'
+    implementation 'androidx.gridlayout:gridlayout:1.0.0'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }

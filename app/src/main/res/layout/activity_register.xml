@@ -7,7 +7,7 @@
     tools:context="com.LightHouse.Fitness.Registration_Activity">
     <ImageView
         android:id="@+id/login_hero_bw"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
         android:fontFamily="@font/arialbold"
@@ -96,23 +96,10 @@
         android:fontFamily="sans-serif-black"
         android:text="@string/sign_up_button"
         app:backgroundTint="#FF0000"
-        app:layout_constraintBottom_toTopOf="@+id/edit_register_login_button"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Text_Register_Retyped_Password" />
 
-    <TextView
-        android:id="@+id/edit_register_login_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/login_button"
-        android:fontFamily="sans-serif-black"
-        android:textColor="#FF0000"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_Register_SignIn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
