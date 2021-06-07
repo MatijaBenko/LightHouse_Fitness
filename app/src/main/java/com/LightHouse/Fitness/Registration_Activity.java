@@ -6,11 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.ArrayMap;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import android.widget.TextView;
 
 import com.LightHouse_Fitness.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -23,9 +23,9 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Vector;
 
+
 public class Registration_Activity extends AppCompatActivity {
 
-    private TextView editLogin;
     private EditText editName, editEmail, editPassword, editRetypePassword;
     private Button button_SignUp;
     private String userName, userEmail, userPassword, userRetypePassword;
@@ -45,7 +45,6 @@ public class Registration_Activity extends AppCompatActivity {
         editPassword = (EditText) findViewById(R.id.Text_Register_Password);
         editRetypePassword = (EditText) findViewById(R.id.Text_Register_Retyped_Password);
         button_SignUp = (Button) findViewById(R.id.button_Register_SignIn);
-        editLogin = (TextView) findViewById(R.id.edit_register_login_button);
 
 
         button_SignUp.setOnClickListener(new View.OnClickListener() {
@@ -78,13 +77,6 @@ public class Registration_Activity extends AppCompatActivity {
                 editName.requestFocus();
             }
         });
-
-        editLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Registration_Activity.this, Login_Activity.class));
-            }
-        });
     }
 
     private boolean validation(String userName, String userEmail, String userPassword, String userRetypePassword) {
@@ -110,6 +102,18 @@ public class Registration_Activity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()) {
+                        Vector<String> blankVector = new Vector<String>();
+                        ArrayMap<String, Vector<String>> blankUserWorkout = new ArrayMap<>();
+                        ArrayMap<String, Vector<String>> blankUserMealPlans = new ArrayMap<>();
+
+                        blankVector.add("Test");
+                        blankUserWorkout.put("Yoga", blankVector);
+                        blankUserWorkout.put("Cardio", blankVector);
+                        blankUserWorkout.put("Weightlifting", blankVector);
+                        blankUserMealPlans.put("Breakfeast", blankVector);
+                        blankUserMealPlans.put("Lunch", blankVector);
+                        blankUserMealPlans.put("Dinner", blankVector);
+                        
                         Toast.makeText(Registration_Activity.this, "Successfully Registered, Email Verification sent", Toast.LENGTH_SHORT).show();
                         FirebaseDatabase fbDataBase = FirebaseDatabase.getInstance();
                         DatabaseReference dataBaseRef = fbDataBase.getReference("Users");
@@ -121,10 +125,12 @@ public class Registration_Activity extends AppCompatActivity {
                         user.setUserAge(-1);
                         user.setUserID(firebaseAuth.getUid());
                         user.setUserBundle("FREE");
+                        user.setUserGoals(blankVector);
+                        user.setUserWorkout(blankUserWorkout);
+                        user.setUserMealPlan(blankUserMealPlans);
                         dataBaseRef.child(user.getUserID()).setValue(user);
                         firebaseAuth.signOut();
                         finish();
-                        startActivity(new Intent(Registration_Activity.this, Login_Activity.class));
                     } else {
                         Toast.makeText(Registration_Activity.this, "Email Verification Failed!", Toast.LENGTH_SHORT).show();
                     }

@@ -1,5 +1,7 @@
 package com.LightHouse.Fitness;
 
+import android.util.ArrayMap;
+
 import java.util.List;
 import java.util.Vector;
 
@@ -9,6 +11,8 @@ public class User_Profile_Activity {
     private Vector<String> userGoals;
     private Integer userAge;
     private Double userWeight;
+    private ArrayMap<String, Vector<String>> userWorkout;
+    private ArrayMap<String, Vector<String>> userMealPlan;
 
     public User_Profile_Activity() {
     }
@@ -44,6 +48,14 @@ public class User_Profile_Activity {
 
     public void setUserBundle(String userBundle) { this.userBundle = userBundle;}
 
+    public void setUserWorkout (ArrayMap<String, Vector<String>> userWorkout) {
+        this.userWorkout = userWorkout;
+    }
+
+    public void setUserMealPlan(ArrayMap<String, Vector<String>> userMealPlan) {
+        this.userMealPlan = userMealPlan;
+    }
+
     // Getters
     public String getUserName() {
         return this.userName;
@@ -73,5 +85,9 @@ public class User_Profile_Activity {
         return this.userID;
     }
 
-    public String getUserBundle() { return  this.userBundle;}
+    public String getUserBundle() { return this.userBundle;}
+
+    public ArrayMap<String, Vector<String>> getUserWorkout() {return this.userWorkout;}
+
+    public ArrayMap<String, Vector<String>> getUserMealPlan() {return  this.userMealPlan;}
 }

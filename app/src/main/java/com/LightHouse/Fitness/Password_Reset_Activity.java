@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.LightHouse_Fitness.R;
@@ -19,7 +18,6 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Password_Reset_Activity extends AppCompatActivity {
 
-    private TextView editLogin;
     private EditText userEmail;
     private Button button_Submit;
     private FirebaseAuth fbAuth;
@@ -31,7 +29,6 @@ public class Password_Reset_Activity extends AppCompatActivity {
 
         button_Submit = (Button) findViewById(R.id.button_Reset_Submit);
         userEmail = (EditText) findViewById(R.id.editText_UserEmail);
-        editLogin = (TextView) findViewById(R.id.edit_password_reset_login_button);
 
         fbAuth = FirebaseAuth.getInstance();
 
@@ -43,12 +40,6 @@ public class Password_Reset_Activity extends AppCompatActivity {
             }
         });
 
-        editLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(Password_Reset_Activity.this, Login_Activity.class));
-            }
-        });
     }
 
     public void emailValidation(String email) {

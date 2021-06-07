@@ -8,10 +8,10 @@
 
     <ImageView
         android:id="@+id/workout_tab_hero"
-        android:layout_width="414dp"
+        android:layout_width="match_parent"
         android:layout_height="195dp"
         android:adjustViewBounds="true"
-        android:scaleType="fitXY"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toTopOf="@+id/fragment_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
